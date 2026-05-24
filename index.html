@@ -1,0 +1,230 @@
+<<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bright Green Bird Sanctuary</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* 기본 스타일 초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #f7fff7; /* 아주 밝은 연두색/크림색 톤 */
+            color: #1a4a1a; 
+            line-height: 1.6;
+            padding: 50px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #2e8b57; 
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: #558b55;
+            font-weight: 300;
+        }
+
+        /* 갤러리 그리드 레이아웃 (데스크톱 2열) */
+        .gallery-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        /* 작품 카드 스타일 */
+        .work-card {
+            background-color: #ffffff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(46, 139, 87, 0.08); 
+            cursor: pointer;
+            position: relative;
+            aspect-ratio: 4 / 3; 
+            border: 1px solid rgba(46, 139, 87, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .work-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 45px rgba(46, 139, 87, 0.15);
+        }
+
+        /* 호버 시 뒤에 보일 배경 설명 영역 */
+        .card-info {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #e6f9e6; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .card-info h3 {
+            font-size: 1.5rem;
+            color: #1a4a1a;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .card-info p {
+            font-size: 1rem;
+            color: #3d7a3d;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+
+        .card-info .view-btn {
+            font-size: 0.9rem;
+            color: #ffffff;
+            background-color: #3CB371; 
+            padding: 8px 22px;
+            border-radius: 25px;
+            font-weight: 400;
+            transition: background-color 0.2s ease;
+        }
+
+        .work-card:hover .view-btn {
+            background-color: #2e8b57;
+        }
+
+        /* 이미지 스타일 및 호버 인터렉션 */
+        .work-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 2; 
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        /* 호버하면 사진이 부드럽게 사라짐 */
+        .work-card:hover .work-img {
+            opacity: 0;
+            transform: scale(1.03); 
+        }
+
+        /* 반응형 미디어 쿼리 */
+        @media (max-width: 800px) {
+            .gallery-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                max-width: 600px;
+            }
+            header h1 { font-size: 2.2rem; }
+        }
+
+        @media (max-width: 500px) {
+            body { padding: 40px 15px; }
+            header h1 { font-size: 1.9rem; }
+            header p { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Nature & Birds</h1>
+        <p>사진에 마우스를 올리면 설명이 나타납니다.</p>
+        <p>클릭하면 새소리와 함께 관련 사이트로 이동합니다!</p>
+    </header>
+
+    <main class="gallery-container">
+        <div class="work-card" data-link="https://www.nationalgeographic.com/animals/birds/">
+            <div class="card-info">
+                <h3>오색조의 지저귐</h3>
+                <p>열대 우림의 아침을 여는 아름다운 깃털의 새들을 만나보세요.</p>
+                <div class="view-btn">자세히 보기</div>
+            </div>
+            <img src="https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?q=80&w=800&auto=format&fit=crop" alt="화려한 새" class="work-img">
+        </div>
+
+        <div class="work-card" data-link="https://www.audubon.org/">
+            <div class="card-info">
+                <h3>숲의 파수꾼</h3>
+                <p>고요한 숲속, 나뭇가지 사이에 숨어있는 지혜로운 부엉이의 이야기.</p>
+                <div class="view-btn">자세히 보기</div>
+            </div>
+            <img src="https://images.unsplash.com/photo-1543501755-e5b152bb7a8e?q=80&w=800&auto=format&fit=crop" alt="부엉이" class="work-img">
+        </div>
+
+        <div class="work-card" data-link="https://www.birdlife.org/">
+            <div class="card-info">
+                <h3>철새의 여정</h3>
+                <p>매년 수천 킬로미터를 날아 이동하는 철새들의 놀라운 생명력.</p>
+                <div class="view-btn">자세히 보기</div>
+            </div>
+            <img src="https://images.unsplash.com/photo-1521191060699-b1ff88909d29?q=80&w=800&auto=format&fit=crop" alt="날아가는 새 무리" class="work-img">
+        </div>
+
+        <div class="work-card" data-link="https://www.birds.cornell.edu/home/">
+            <div class="card-info">
+                <h3>도시의 이웃</h3>
+                <p>우리 곁, 도심 속 공원에서 흔히 볼 수 있는 친근한 새들의 노래.</p>
+                <div class="view-btn">자세히 보기</div>
+            </div>
+            <img src="https://images.unsplash.com/photo-1550159496-1c255d6778f6?q=80&w=800&auto=format&fit=crop" alt="작은 새" class="work-img">
+        </div>
+    </main>
+
+    <audio id="bird-sound" src="https://assets.mixkit.co/active_storage/sfx/1125/1125-84.wav" preload="auto"></audio>
+
+    <script>
+        const cards = document.querySelectorAll('.work-card');
+        const birdSound = document.getElementById('bird-sound');
+
+        cards.forEach(card => {
+            card.addEventListener('click', function() {
+                const targetLink = this.getAttribute('data-link');
+
+                // [핵심 수정] 오디오 재생 실패 여부와 상관없이 무조건 링크가 열리도록 안전장치 마련
+                try {
+                    birdSound.currentTime = 0;
+                    birdSound.play().catch(err => {
+                        console.log("오디오 자동재생 제한 또는 로드 실패 시에도 링크는 정상 작동합니다.");
+                    });
+                } catch(e) {
+                    console.log("오디오 에러 무시");
+                }
+                
+                // 링크 이동
+                if (targetLink) {
+                    setTimeout(() => {
+                        window.open(targetLink, '_blank');
+                    }, 250); // 소리가 잠깐 시작될 아주 짧은 딜레이 후 이동
+                }
+            });
+        });
+    </script>
+</body>
+</html>
